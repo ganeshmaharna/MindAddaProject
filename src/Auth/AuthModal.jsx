@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import LoginCard from "./LoginCard";
 import SignupCard from "./SignupCard";
+import {useNavigate} from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const AuthModal = ({login}) => {
+const AuthModal = ({login,onAuthentication}) => {
   const [activeCard, setActiveCard] = useState(login);
+  const navigate = useNavigate();
 
-  const handleTabClick = (tab) => {
+  const handleTabClick = (tab) => {    
     setActiveCard(tab);
+    tab === "login" ? navigate("/users/sign_in") : tab === "signup" && navigate("/users/sign_up");
   };
 
   return (
@@ -38,7 +41,7 @@ const AuthModal = ({login}) => {
               Login
             </div>
           </div>
-          {activeCard === "login" ? <LoginCard /> : <SignupCard />}
+          {activeCard === "login" ? <LoginCard onAuthentication={onAuthentication}/> : <SignupCard />}
         </div>
       </div>
     </div>

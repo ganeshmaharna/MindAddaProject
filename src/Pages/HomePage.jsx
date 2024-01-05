@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import Navbar from "../components/Navbar";
@@ -14,10 +15,10 @@ import Testimonials from "../components/Testimonials";
 import Faq from "../components/Faq";
 import Footer from "../components/Footer";
 
-const HomePage = () => {
+const HomePage = ({isAuthenticated}) => {
   return (
     <>
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated}/>
       <Home />
       <Host />
       <SuccessStory />

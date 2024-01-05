@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 
-function Navbar() {
+function Navbar({ isAuthenticated }) {
   return (
     <div className="fixed top-0 left-0 z-50 w-full bg-black shadow-md">
       <nav className="w-10/12 mx-auto px-4 flex py-4 items-center justify-between">
@@ -12,20 +13,66 @@ function Navbar() {
           </div>
         </a>
 
-        <ul className="hidden md:flex items-center space-x-4">
-          <li>
-            <a className="text-white px-3 py-2 rounded-md hover:bg-gray-800" href="/users/sign_in">
-              Login
-            </a>
-          </li>
-          <li>
-            <a className="text-white px-3 py-2 rounded-md hover:bg-gray-800" href="/users/sign_up">
-              Signup
-            </a>
-          </li>
-        </ul>
+        {isAuthenticated ? (
+          <ul className="hidden md:flex items-center space-x-4">
+            <li>
+              <a
+                className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                href="/ai_conversations"
+              >
+                AiBot
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                href="/users/sign_up"
+              >
+                Feed
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                href="/users/sign_up"
+              >
+                Member
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                href="/"
+              >
+                Event
+              </a>
+            </li>
+          </ul>
+        ) : (
+          <ul className="hidden md:flex items-center space-x-4">
+            <li>
+              <a
+                className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                href="/users/sign_in"
+              >
+                Login
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                href="/users/sign_up"
+              >
+                Signup
+              </a>
+            </li>
+          </ul>
+        )}
 
-        <a className="md:hidden text-white px-3 py-2 rounded-md hover:bg-gray-800" href="/users/sign_in">
+        <a
+          className="md:hidden text-white px-3 py-2 rounded-md hover:bg-gray-800"
+          href="/users/sign_in"
+        >
           Login
         </a>
       </nav>

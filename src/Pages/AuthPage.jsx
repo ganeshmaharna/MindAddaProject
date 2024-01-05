@@ -4,11 +4,11 @@ import Navbar from '../components/Navbar'
 import AuthModal from '../Auth/AuthModal'
 
 // eslint-disable-next-line react/prop-types
-const AuthPage = ({login}) => {
+const AuthPage = ({login,onAuthentication}) => {
   return (
     <>
       <Navbar/>
-      <AuthModal login={login}/>
+      <AuthModal login={login} onAuthentication={onAuthentication}/>
     </>
   )
 }

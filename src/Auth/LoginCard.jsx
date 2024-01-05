@@ -1,14 +1,35 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const LoginCard = () => {
+// eslint-disable-next-line react/prop-types
+const LoginCard = ({onAuthentication}) => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const authenticateUser = async () => {
+    // Simulate authentication logic
+    if (email === "ganesh@gmail.com" && password === "123456") {
+      onAuthentication();
+      navigate("/");
+    } else {
+      console.log("Authentication failed");
+    }
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Call the authenticateUser function when the login button is clicked
+    authenticateUser();
+  };
   return (
     <div className="relative w-full max-w-md px-4 h-full md:h-auto mx-auto bg-green-300">
       <div className="bg-red-300 rounded-lg shadow relative dark:bg-gray-700">
         <div className="flex justify-end p-2">
           <button
             type="button"
-            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
             data-modal-toggle="authentication-modal"
           >
             <svg
@@ -28,6 +49,7 @@ const LoginCard = () => {
         <form
           className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8"
           action="#"
+          onSubmit={handleLogin}
         >
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign in to our platform
@@ -43,6 +65,8 @@ const LoginCard = () => {
               type="email"
               name="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="name@company.com"
               required=""
@@ -59,6 +83,8 @@ const LoginCard = () => {
               type="password"
               name="password"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required=""
