@@ -1,15 +1,20 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 // eslint-disable-next-line react/prop-types
-const LoginCard = ({onAuthentication}) => {
+const LoginCard = ({ onAuthentication }) => {
+  const [showPassword, setShowPassword] = useState(true);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const authenticateUser = async () => {
     // Simulate authentication logic
+    console.log("this is my email", email);
+    console.log("this is my password", password);
     if (email === "ganesh@gmail.com" && password === "123456") {
       onAuthentication();
       navigate("/");
@@ -47,7 +52,7 @@ const LoginCard = ({onAuthentication}) => {
           </button>
         </div>
         <form
-          className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8"
+          className="space-y-6 px-6 pb-4 sm:pb-6 xl:pb-8"
           action="#"
           onSubmit={handleLogin}
         >
@@ -55,40 +60,45 @@ const LoginCard = ({onAuthentication}) => {
             Sign in to our platform
           </h3>
           <div>
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
-            >
-              Your email
-            </label>
             <input
               type="email"
               name="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@company.com"
+              className="text-md block px-3 py-3 rounded-lg w-full 
+              bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+              focus:placeholder-gray-500
+              focus:bg-white 
+              focus:border-gray-600  
+              focus:outline-none"
+              placeholder="Email"
               required=""
             />
           </div>
+
           <div>
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
-            >
-              Your password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required=""
-            />
+            <div className="relative">
+              <input
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}
+                value={password}
+                className="text-md block px-3 py-3 rounded-lg w-full 
+                     bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+                     focus:placeholder-gray-500
+                     focus:bg-white 
+                     focus:border-gray-600  
+                     focus:outline-none"
+              />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+                <FontAwesomeIcon
+                  icon={showPassword ? faEye : faEyeSlash}
+                  className="h-6 text-gray-700 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </div>
+            </div>
           </div>
           <div className="flex justify-between">
             <div className="flex items-start">

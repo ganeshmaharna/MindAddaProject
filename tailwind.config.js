@@ -9,6 +9,9 @@ export default {
     extend: {
       colors: {
         whothisli: "#FFDB15",
+        cardheader:"#222",
+        cardbody:"#444",
+        aibtn:"#fbe137"
       },
     },
   },

@@ -1,7 +1,10 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignupCard = () => {
+  const [showPassword, setShowPassword] = useState(true);
   return (
     <div className="relative w-full max-w-md px-4 h-full md:h-auto mx-auto bg-green-300">
       <div className="bg-red-300 rounded-lg shadow relative dark:bg-gray-700">
@@ -26,43 +29,77 @@ const SignupCard = () => {
           </button>
         </div>
         <form
-          className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8"
+          className="space-y-4 px-6 lg:px-6 pb-4 sm:pb-6 xl:pb-8"
           action="#"
         >
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign Up to our platform
           </h3>
           <div>
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
-            >
-              Your email
-            </label>
             <input
-              type="email"
-              name="email"
-              id="email"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@company.com"
+              type="text"
+              name="name"
+              id="name"
+              className="text-md block px-3 py-2 rounded-lg w-full 
+              bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+              focus:placeholder-gray-500
+              focus:bg-white 
+              focus:border-gray-600  
+              focus:outline-none"
+              placeholder="Full Name"
               required=""
             />
           </div>
           <div>
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
-            >
-              Your password
-            </label>
             <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              type="email"
+              name="email"
+              id="email"
+              className="text-md block px-3 py-2 rounded-lg w-full 
+              bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+              focus:placeholder-gray-500
+              focus:bg-white 
+              focus:border-gray-600  
+              focus:outline-none"
+              placeholder="Email"
               required=""
             />
+          </div>
+          <div>
+            <input
+              type="phone"
+              name="phone"
+              id="phone"
+              className="text-md block px-3 py-2 rounded-lg w-full 
+              bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+              focus:placeholder-gray-500
+              focus:bg-white 
+              focus:border-gray-600  
+              focus:outline-none"
+              placeholder="Phone"
+              required=""
+            />
+          </div>
+          <div>
+            <div className="relative">
+              <input
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                className="text-md block px-3 py-2 rounded-lg w-full 
+                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+                focus:placeholder-gray-500
+                focus:bg-white 
+                focus:border-gray-600  
+                focus:outline-none"
+              />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+                <FontAwesomeIcon
+                  icon={showPassword ? faEye : faEyeSlash}
+                  className="h-6 text-gray-700 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </div>
+            </div>
           </div>
           <div className="flex justify-between">
             <div className="flex items-start">
