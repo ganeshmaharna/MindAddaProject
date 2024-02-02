@@ -17,36 +17,36 @@ function Navbar({ isAuthenticated }) {
         {isAuthenticated ? (
           <ul className="hidden md:flex items-center space-x-4">
             <li>
-              <a
+              <Link
                 className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
-                href="/ai_conversations"
+                to="/ai_conversations"
               >
                 AiBot
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
-                href="/users/sign_up"
+                to="/users/sign_up"
               >
                 Feed
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
-                href="/users/sign_up"
+                to="/users/sign_up"
               >
                 Member
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-white px-3 py-2 rounded-md hover:bg-gray-800"
-                href="/"
+                to="/"
               >
                 Event
-              </a>
+              </Link>
             </li>
           </ul>
         ) : (

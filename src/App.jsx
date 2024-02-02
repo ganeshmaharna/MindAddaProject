@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route path="*" exact element={<HomePage isAuthenticated={isAuthenticated}/>} />
         <Route path="/ai_conversations" element={<AibotPage />} />
-        <Route path="users/sign_in" element={<AuthPage login={"login"} onAuthentication={handleAuthentication}/>} />
-        <Route path="users/sign_up" element={<AuthPage login={"signup"}/>} />
+        <Route path="/users/sign_in" element={<AuthPage login={"login"} onAuthentication={handleAuthentication}/>} />
+        <Route path="/users/sign_up" element={<AuthPage login={"signup"}/>} />
       </Routes>
     </Router>
   );
